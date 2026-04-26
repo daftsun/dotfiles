@@ -12,7 +12,7 @@ from collections.abc import Generator
 from pathlib import Path
 
 # Constants
-IGNORED_PATHS: frozenset[str] = frozenset({".git", "config_placer.py", ".gitignore", ".ruff_cache"})
+IGNORED_PATHS: frozenset[str] = frozenset({".git", "config_placer.py", ".gitignore", ".ruff_cache", "installer.sh"})
 
 
 def find_config_files() -> Generator[Path, None, None]:
