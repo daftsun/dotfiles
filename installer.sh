@@ -16,7 +16,7 @@ echo_text() {
 
 main(){
     echo_text "Installing Applications"
-    sudo pacman -S --needed --noconfirm fish ghostty zed uv starship firefox neovim git
+    sudo pacman -S --needed --noconfirm fish ghostty zed uv starship firefox neovim git ttf-jetbrains-mono-nerd
     echo "Packages Installed"
 
     echo_text "Setting up configurations"
