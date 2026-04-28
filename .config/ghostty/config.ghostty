@@ -4,6 +4,10 @@ font-size = 12
 theme = Monokai Pro Spectrum
 background-blur = true
 window-decoration = none
-window-height = 25
-window-width = 100
+window-height = 28
+window-width = 110
 background-opacity = 0.9
+
+window-padding-x = 5
+window-padding-y = 4
+window-padding-balance = true
