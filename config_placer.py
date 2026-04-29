@@ -12,7 +12,9 @@ from collections.abc import Generator
 from pathlib import Path
 
 # Constants
-IGNORED_PATHS: frozenset[str] = frozenset({".git", "config_placer.py", ".gitignore", ".ruff_cache", "installer.sh"})
+IGNORED_PATHS: frozenset[str] = frozenset(
+    {".git", "config_placer.py", ".gitignore", ".ruff_cache", "installer.sh", "README.MD"}
+)
 
 
 def find_config_files() -> Generator[Path, None, None]:
@@ -37,7 +39,7 @@ def copy_config_item(source: Path, destination: Path) -> None:
                 copy_config_item(item, target_path)
         else:
             shutil.copy2(src=source, dst=target_path)
-            print(f"{source.name.upper()} -> {destination}")
+            print(f"{source.name.upper():<20} {'->':<5} {destination}")
 
     except shutil.Error as err:
         print(f"Failed to copy {source.name}: {err}")
