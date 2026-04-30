@@ -9,11 +9,33 @@ vim.pack.add({
 
 -- ACTIVATE PLUGINS
 
+-- Icons
+require('mini.icons').setup()
+
 -- Statusline
-local statusline = require 'mini.statusline'
-statusline.setup { use_icons = true }
----@diagnostic disable-next-line: duplicate-set-field
-statusline.section_location = function() return '%2l:%-2v' end
+require('mini.statusline').setup({
+  content = {
+    active = function()
+      local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 50 })
+      local git           = MiniStatusline.section_git({ trunc_width = 40 })
+      local filename      = MiniStatusline.section_filename({ trunc_width = 50 })
+      local fileinfo      = MiniStatusline.section_fileinfo({ trunc_width = 250 })
+      local location      = '%l:%v-%L'
+      local search        = MiniStatusline.section_searchcount({ trunc_width = 75 })
+
+
+      return MiniStatusline.combine_groups({
+        { hl = mode_hl,                  strings = { mode } },
+        { hl = 'MiniStatuslineDevinfo',  strings = { git } },
+        '%<', -- Truncate point
+        { hl = 'MiniStatuslineFilename', strings = { filename } },
+	'%=', -- Right align everything after this
+        { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+        { hl = mode_hl,                  strings = { search, location } },
+      })
+    end
+  }
+})
 
 -- Which Key popup
 require('which-key').setup({ delay = 0, preset = "modern", icons = { mappings = false } })
@@ -22,4 +44,4 @@ require('which-key').setup({ delay = 0, preset = "modern", icons = { mappings = 
 require "mini.completion".setup()
 
 -- Colorizer
-require("colorizer").setup({ options = { parsers = { css = true } }, })
+require("colorizer").setup({ options = { parsers = { css = true }}, })
