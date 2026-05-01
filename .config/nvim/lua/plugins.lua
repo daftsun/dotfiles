@@ -9,6 +9,9 @@ vim.pack.add({
 
 -- ACTIVATE PLUGINS
 
+-- Auto Close Brackets
+require('mini.pairs').setup()
+
 -- Icons
 require('mini.icons').setup()
 -- Git
