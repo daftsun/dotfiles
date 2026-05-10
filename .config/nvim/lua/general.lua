@@ -46,3 +46,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights on search' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set({"n", "v"}, "d", '"_d', {noremap = true})
+vim.keymap.set({"n", "v"}, "x", '"_x', {noremap = true})

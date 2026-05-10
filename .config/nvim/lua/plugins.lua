@@ -1,9 +1,9 @@
 -- PLUGINS
 
 vim.pack.add({
-    { src = "https://github.com/nvim-mini/mini.nvim",         version = "main",   name = "mini" },
-    { src = "https://github.com/folke/which-key.nvim",        version = "main",   name = "which-key" },
-    { src = "https://github.com/catgoose/nvim-colorizer.lua", version = "master", name = "colorizer" }
+    { src = "https://github.com/nvim-mini/mini.nvim",         version = "main" },
+    { src = "https://github.com/folke/which-key.nvim",        version = "main" },
+    { src = "https://github.com/brenoprata10/nvim-highlight-colors", version = "main" }
 })
 
 
@@ -51,10 +51,25 @@ require('mini.statusline').setup({
 })
 
 -- Which Key popup
-require('which-key').setup({ delay = 0, preset = "modern", icons = { mappings = false } })
+require('which-key').setup({
+	delay = 0,
+	icons = {
+		mappings = vim.g.have_nerd_font,
+		keys = vim.g.have_nerd_font and {} or {
+			Up = '<Up> ', Down = '<Down> ', Left = '<Left> ', Right = '<Right> ',
+			C = '<C-…> ', M = '<M-…> ', D = '<D-…> ', S = '<S-…> ',
+			CR = '<CR> ', Esc = '<Esc> ', ScrollWheelDown = '<ScrollWheelDown> ',
+			ScrollWheelUp = '<ScrollWheelUp> ', NL = '<NL> ', BS = '<BS> ',
+			Space = '<Space> ', Tab = '<Tab> ',
+			F1 = '<F1>', F2 = '<F2>', F3 = '<F3>', F4 = '<F4>', F5 = '<F5>',
+			F6 = '<F6>', F7 = '<F7>', F8 = '<F8>', F9 = '<F9>', F10 = '<F10>',
+			F11 = '<F11>', F12 = '<F12>',
+		},
+	},
+})
 
 -- Auto-Completions
 require "mini.completion".setup()
 
 -- Colorizer
-require("colorizer").setup({ options = { parsers = { css = true }}, })
+require("nvim-highlight-colors").setup({render = 'background'})
