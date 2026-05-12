@@ -10,7 +10,7 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export GROFF_NO_SGR=1
 
 # Aliases
-alias ll="ls -lAh --color"
+alias ll="ls -lAh --color --group-directories-first"
 
 
 ## Functions
