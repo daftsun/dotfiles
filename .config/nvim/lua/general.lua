@@ -30,17 +30,19 @@ vim.opt.clipboard = { 'unnamed', 'unnamedplus' } -- clipboard settings
 vim.o.termguicolors = true
 vim.o.autocomplete = true
 vim.opt.completeopt = { 'menuone', 'noinsert' } -- Options for insert mode completion
+vim.o.tabstop = 2                               -- Number of spaces tab is
+vim.o.expandtab = true                          -- Convert tab to spaces
 
 
 -- AUTOCMD
 
 -- Highlight when yanking
 vim.api.nvim_create_autocmd('TextYankPost', {
-	desc = "Highlight when yanking text",
-	group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+  desc = "Highlight when yanking text",
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 }
 )
 
