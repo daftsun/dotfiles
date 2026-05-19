@@ -31,8 +31,9 @@ vim.o.termguicolors = true
 vim.o.autocomplete = true
 vim.opt.completeopt = { 'menuone', 'noinsert' } -- Options for insert mode completion
 vim.o.tabstop = 2                               -- Number of spaces tab is
+vim.opt.shiftwidth = 2                          -- Number of spaces used for each step of indent
 vim.o.expandtab = true                          -- Convert tab to spaces
-
+vim.opt.cmdheight = 0
 
 -- AUTOCMD
 
@@ -52,3 +53,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights o
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set({ "n", "v" }, "d", '"_d', { noremap = true })
 vim.keymap.set({ "n", "v" }, "x", '"_x', { noremap = true })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Replace word cursor is on globally" })
