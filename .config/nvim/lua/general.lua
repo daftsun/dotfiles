@@ -1,7 +1,6 @@
 -- GLOBALS
 
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 vim.g.clipboard = "osc52"
 
@@ -29,11 +28,10 @@ vim.o.winborder = 'rounded'                      -- default border for all float
 vim.opt.clipboard = { 'unnamed', 'unnamedplus' } -- clipboard settings
 vim.o.termguicolors = true
 vim.o.autocomplete = true
-vim.opt.completeopt = { 'menuone', 'noinsert' } -- Options for insert mode completion
-vim.o.tabstop = 2                               -- Number of spaces tab is
-vim.opt.shiftwidth = 2                          -- Number of spaces used for each step of indent
-vim.o.expandtab = true                          -- Convert tab to spaces
-vim.opt.cmdheight = 0
+vim.opt.completeopt = "menuone,noselect,fuzzy" -- Options for insert mode completion
+vim.o.tabstop = 2                              -- Number of spaces tab is
+vim.opt.shiftwidth = 2                         -- Number of spaces used for each step of indent
+vim.o.expandtab = true                         -- Convert tab to spaces
 
 -- AUTOCMD
 
@@ -45,6 +43,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 }
+)
+
+-- Command to update plugin
+vim.api.nvim_create_user_command('PackUpdate',
+  function()
+    vim.pack.update()
+  end,
+  {}
 )
 
 --  KEYMAPS

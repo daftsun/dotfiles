@@ -25,6 +25,16 @@ require('mini.diff').setup({
   },
 })
 
+---- mini notify ----
+require("mini.notify").setup({
+  -- only show messages
+  content = {
+    format = function(notif)
+      return notif.msg
+    end,
+  },
+})
+
 -- Statusline
 require('mini.statusline').setup({
   content = {
