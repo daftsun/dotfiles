@@ -1,8 +1,10 @@
-## List of my personal dotfiles
+## Personal dotfiles
 
 Run the below command to run setup all
 
 ```bash
-
-curl -fsSL https://raw.githubusercontent.com/daftsun/dotfiles/refs/heads/master/installer.sh | bash
+mkdir Github
+git clone https://github.com/aditya27gupta/dotfiles.git
+cd dotfiles
+python config_placer.py
 ```

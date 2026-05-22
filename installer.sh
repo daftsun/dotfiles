@@ -23,21 +23,13 @@ install_apps(){
 
 main(){
     echo_text "Installing Applications"
-    packages=("fish" "ghostty" "zed" "uv" "starship" "firefox" "neovim" "git" "ttf-jetbrains-mono-nerd")
+    packages=("fish" "ghostty" "zed" "uv" "starship" "firefox" "neovim" "ttf-jetbrains-mono-nerd")
     for item in "${packages[@]}";
         do install_apps "$item"
     done
 
-    echo_text "Setting up configurations"
-    cd $HOME
-    [ ! -d "Github" ] && mkdir "Github"
-    echo "Created Github Directory"
-    cd ./Github/
-    [ ! -d "dotfiles" ] && git clone https://github.com/aditya27gupta/dotfiles.git
-    echo "Pulled Dotfile Repository"
-
     echo_text "Placing dotfiles"
-    python3 ./dotfiles/config_placer.py
+    python3 config_placer.py
 }
 
 main
