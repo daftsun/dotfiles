@@ -7,7 +7,6 @@ set -gx PATH $HOME/.local/bin $PATH
 
 # Exports
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
-export GROFF_NO_SGR=1
 
 # Aliases
 alias ll="ls -lAh --color --group-directories-first"

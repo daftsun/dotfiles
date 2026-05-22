@@ -1,3 +1,7 @@
+[user]
+	email = aditya27gupta@gmail.com
+	name = aditya gupta
+
 [alias]
 	addput = "!f() { git add -A && git commit -m \"$1\" && git push; }; f"
 	put = "!f() { git commit -am \"$1\" && git push; }; f"
