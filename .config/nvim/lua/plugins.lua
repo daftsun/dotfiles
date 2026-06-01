@@ -37,6 +37,7 @@ require("mini.notify").setup({
 
 -- Statusline
 require('mini.statusline').setup({
+  set_vim_settings=false,
   content = {
     active = function()
       local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 50 })
@@ -59,6 +60,23 @@ require('mini.statusline').setup({
     end
   }
 })
+
+-- Force your custom color overrides every time a theme loads
+vim.api.nvim_create_autocmd('ColorScheme', {
+  pattern = '*',
+  callback = function()
+    local set_hl = vim.api.nvim_set_hl
+    set_hl(0, 'MiniStatuslineModeNormal',  { fg = '#1e1e2e', bg = '#a6e3a1', bold = true })
+    set_hl(0, 'MiniStatuslineModeInsert',  { fg = '#1e1e2e', bg = '#f38ba8', bold = true })
+    set_hl(0, 'MiniStatuslineModeVisual',  { fg = '#1e1e2e', bg = '#cba6f7', bold = true })
+    set_hl(0, 'MiniStatuslineModeReplace', { fg = '#1e1e2e', bg = '#f9e2af', bold = true })
+    set_hl(0, 'MiniStatuslineModeCommand', { fg = '#1e1e2e', bg = '#89b4fa', bold = true })
+    set_hl(0, 'MiniStatuslineModeOther',   { fg = '#1e1e2e', bg = '#94e2d5', bold = true })
+  end,
+})
+
+-- Trigger it once manually for your current session
+vim.cmd('doautocmd ColorScheme')
 
 -- Which Key popup
 require('which-key').setup({
